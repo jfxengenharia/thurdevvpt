@@ -7,6 +7,20 @@
   font-display: block;
 }
 
+/* Might (Funtype Co., gratuita para uso pessoal): títulos e destaques.
+   Peso único: sem negrito/itálico sintetizados pelo navegador. */
+@font-face {
+  font-family: "Might";
+  src: url("../assets/fonts/might.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+html {
+  font-synthesis: none;
+}
+
 /* Hierarquia tipográfica híbrida: serifa dramática + sans discreta + metadados editoriais. */
 
 .t-display {
