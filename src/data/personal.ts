@@ -57,7 +57,7 @@ export const personal: Personal = {
   contact: {
     message:
       "Para conversas sobre projetos, colaborações ou oportunidades, o caminho mais direto é o e-mail. Respondo com atenção a cada mensagem.",
-    email: { address: "seuemail@email.com", provisional: true },
+    email: { address: "arthurdeventerprise@gmail.com" },
     links: [
       { label: "GitHub", href: "https://github.com/", handle: "github.com/…", provisional: true },
       { label: "LinkedIn", href: "https://linkedin.com/", handle: "linkedin.com/in/…", provisional: true },
