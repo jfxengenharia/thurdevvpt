@@ -45,6 +45,6 @@ export const experience: ExperienceEntry[] = [
     title: "Academia · portfólio Cyber-Classical",
     institution: "Projeto pessoal",
     description:
-      "Construção deste portfólio com React, TypeScript, Vite e GSAP: estudo de direção de arte, animação e arquitetura de interface.",
+      "Construção deste portfólio com React, TypeScript e GSAP: estudo de direção de arte, animação e arquitetura de interface.",
   },
 ];

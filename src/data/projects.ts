@@ -2,67 +2,72 @@ import type { Project } from "./types";
 import { artworks } from "./artworks";
 
 /**
- * Projetos — apresentados como obras da exposição.
+ * Projetos, apresentados como obras da exposição.
  *
- * Fonte: versão anterior do portfólio (título, categoria, descrição, stack e status).
- * Objetivo, arquitetura, ano e links ainda não foram documentados e estão
- * marcados em `pendingFields`; nenhum link foi inventado.
+ * Fonte: repositórios públicos de github.com/thurdevv (README de cada projeto).
+ * Por decisão do autor, Drizzle e Vite não são listados nas stacks.
  *
  * As obras de cada projeto vêm de `artworks.ts` (substitua por imagens do projeto quando houver).
  */
 export const projects: Project[] = [
   {
-    id: "fleet-control",
+    id: "summer-ia",
     inventory: "Inv. 001",
-    title: "Fleet Control",
-    category: "Backend · API",
-    year: "A definir",
+    title: "Summer IA",
+    category: "IA · Agente autônomo",
+    year: "2026",
     status: "Em desenvolvimento",
     summary:
-      "Plataforma de gestão de frotas com consulta de veículos, checklists e centralização de operações.",
+      "Agente de IA que ensina programação executando tarefas reais: lê arquivos, escreve e roda código, navega na web.",
     description:
-      "Plataforma de gestão de frotas com consulta de veículos, checklists e centralização de operações em um único sistema.",
-    objective: "A documentar.",
-    architecture: "A documentar.",
-    technologies: ["Node.js", "TypeScript", "PostgreSQL"],
-    links: [],
-    pendingFields: ["objective", "architecture", "links", "year"],
+      "A Summer não é um chatbot: é um agente que decide, executa, observa o resultado e escolhe o próximo passo. Tem 27 ferramentas em 7 categorias (arquivos, busca em código, inspeção, execução de Python e shell, web, fontes externas como GitHub e PyPI, e navegador autônomo), três personas nativas (engenheira sênior, mentora e autônoma) e personas customizáveis em YAML.",
+    objective:
+      "Ensinar programação na prática: em vez de só explicar um conceito, o agente cria o código, executa e mostra o resultado, mantendo memória da conversa para continuar a partir do que já foi feito.",
+    architecture:
+      "Núcleo em Python com loop agentic, executor de ferramentas, memória de sessão e camada de segurança em sete etapas (filtro de ferramentas, validação de argumentos, caminhos protegidos, aprovação humana para execução de código, bloqueio de comandos destrutivos e de segredos, proteção anti-SSRF e subprocessos isolados com timeout). Usa Gemini como modelo principal com fallback automático para Groq. Duas interfaces: CLI no terminal e GUI web com FastAPI e WebSocket.",
+    technologies: ["Python", "FastAPI", "WebSocket", "Gemini", "Groq", "Playwright", "Pydantic"],
+    links: [{ label: "Repositório", href: "https://github.com/thurdevv/summerAgent" }],
     artwork: artworks.venus,
   },
   {
-    id: "engineering-hub",
+    id: "bim-eletrico",
     inventory: "Inv. 002",
-    title: "Engineering Hub",
-    category: "Full stack · Painel interno",
-    year: "A definir",
-    status: "Conceito",
+    title: "BIM Elétrico",
+    category: "Full stack · Engenharia",
+    year: "2026",
+    status: "Publicado",
     summary:
-      "Painel interno para organizar processos, indicadores e fluxos operacionais de engenharia.",
+      "Acompanhamento de instalações elétricas sobre modelos BIM em 3D no navegador, com uso offline em obra.",
     description:
-      "Painel interno para organizar processos, indicadores e fluxos operacionais de engenharia.",
-    objective: "A documentar.",
-    architecture: "A documentar.",
-    technologies: ["React", "Express", "SQL"],
-    links: [],
-    pendingFields: ["objective", "architecture", "links", "year"],
+      "O técnico em campo carrega um modelo BIM (IFC ou XKT), toca em um elemento e registra o progresso: status, quantidade executada, equipe, horas, checklist, observações e foto. O sistema calcula o avanço por pavimento e por tipo de instalação e gera relatório.",
+    objective:
+      "Levar o acompanhamento de obra para o modelo 3D e funcionar mesmo sem internet no canteiro, sincronizando os dados entre dispositivos quando a conexão volta.",
+    architecture:
+      "PWA offline-first: Postgres como fonte de verdade, cache local de leitura e fila de escrita (outbox) com envio em lote, reenvio individual quando um registro falha e dead-letter após cinco tentativas. Conflitos resolvidos por last-write-wins. Autenticação por sessão com cookie assinado (HMAC-SHA256), senhas com bcrypt e autorização por projeto (membro e dono). Visualizador 3D com xeokit e leitura de IFC via WebAssembly.",
+    technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "PostgreSQL", "xeokit", "WebAssembly", "Vitest"],
+    links: [
+      { label: "Ver online", href: "https://dashboardeletrica.vercel.app" },
+      { label: "Repositório", href: "https://github.com/thurdevv/dashboard_eletrica" },
+    ],
     artwork: artworks.galateia,
   },
   {
-    id: "workflow-system",
+    id: "acompanhamento-pessoal",
     inventory: "Inv. 003",
-    title: "Workflow System",
-    category: "Automação · Integração",
-    year: "A definir",
-    status: "Experimental",
+    title: "Acompanhamento Pessoal",
+    category: "Full stack · API REST",
+    year: "2026",
+    status: "Em desenvolvimento",
     summary:
-      "Automação de rotinas e integração entre serviços para reduzir tarefas manuais.",
+      "Sistema de acompanhamento pessoal com quatro áreas: saúde, finanças, estudos e projetos.",
     description:
-      "Automação de rotinas e integração entre serviços para reduzir tarefas manuais.",
-    objective: "A documentar.",
-    architecture: "A documentar.",
-    technologies: ["TypeScript", "REST API", "n8n"],
-    links: [],
-    pendingFields: ["objective", "architecture", "links", "year"],
+      "Reúne em um só lugar o registro de saúde (água, sono e alimentação), finanças (receitas, despesas, categorias, metas e investimentos), estudos (cartões personalizáveis) e projetos de programação com tarefas. Os indicadores são apresentados como números e percentuais em texto, sem gráficos.",
+    objective:
+      "Centralizar a rotina pessoal em uma ferramenta simples, responsiva e acessível também pelo celular.",
+    architecture:
+      "Monorepo com cliente em React e API REST em Node.js com Express, separada por domínio (saúde, finanças, estudos, projetos). Banco PostgreSQL com schema criado automaticamente na inicialização da API. Deploy por blueprint no Render: banco gerenciado, serviço da API com CORS restrito ao frontend e site estático.",
+    technologies: ["React", "TypeScript", "Node.js", "Express", "PostgreSQL", "Render"],
+    links: [{ label: "Repositório", href: "https://github.com/thurdevv/acompanhamento" }],
     artwork: artworks.baco,
   },
 ];

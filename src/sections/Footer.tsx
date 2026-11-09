@@ -19,7 +19,7 @@ export function Footer() {
           <div className="colophon-col">
             <span className="t-meta">Colofão</span>
             <p className="colophon-text">
-              Composto em Cormorant Garamond, Inter e JetBrains Mono. Construído com React, TypeScript, Vite e GSAP.
+              Composto em Oswald, Inter e JetBrains Mono. Construído com React, TypeScript e GSAP.
             </p>
             <p className="colophon-text colophon-text--dim">{artworkCredit}</p>
             <p className="colophon-text colophon-text--dim">
