@@ -1,0 +1,309 @@
+.library {
+  overflow: clip;
+}
+
+.library-room {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 8fr) minmax(0, 4fr);
+  gap: clamp(32px, 5vw, 88px);
+  align-items: start;
+}
+/* Luz quente vinda do alto — lâmpada de sala de leitura. */
+.library-lamp {
+  position: absolute;
+  inset: -120px -10% auto;
+  height: 70%;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(50% 60% at 40% 0%, rgba(214, 160, 96, 0.13), transparent 70%);
+}
+
+.library-shelves {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(48px, 5vw, 72px) clamp(20px, 2.4vw, 36px);
+}
+@media (max-width: 1200px) {
+  .library-shelves {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ——— Estante ——— */
+.shelf-label {
+  display: flex;
+  align-items: flex-end;
+  gap: 18px;
+  margin-bottom: 18px;
+}
+.shelf-numeral {
+  font-size: 40px;
+  line-height: 0.9;
+}
+.shelf-title {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(24px, 2.2vw, 32px);
+  line-height: 1;
+}
+.shelf-desc {
+  margin-top: 6px;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 16px;
+  color: var(--paper-mute);
+}
+
+.shelf-case {
+  position: relative;
+  /* Fundo da estante: madeira escura com veio vertical. */
+  background:
+    var(--tex-fiber),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.65), transparent 8%, transparent 92%, rgba(0, 0, 0, 0.65)),
+    linear-gradient(180deg, #0d0906 0%, #17100a 60%, #1c130c 100%);
+  background-size: 400px 400px, 100% 100%, 100% 100%;
+  box-shadow:
+    inset 0 18px 30px -12px rgba(0, 0, 0, 0.9),
+    inset 0 0 0 1px rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(90, 70, 38, 0.35);
+  border-bottom: 0;
+}
+.shelf-books {
+  position: relative;
+  height: clamp(190px, 17vw, 240px);
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  padding: 18px 22px 0;
+  overflow: hidden;
+}
+.shelf-plank {
+  height: 16px;
+  background:
+    var(--tex-fiber),
+    linear-gradient(180deg, #4a3520 0%, #2d1f12 40%, #170f08 100%);
+  background-size: 400px 400px, 100% 100%;
+  box-shadow:
+    0 1px 0 rgba(168, 137, 78, 0.25) inset,
+    0 18px 30px -10px rgba(0, 0, 0, 0.9);
+}
+
+/* ——— Volume ——— */
+.book {
+  position: relative;
+  flex: none;
+  width: var(--book-w);
+  height: var(--book-h);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 0 10px;
+  background:
+    var(--tex-photocopy),
+    linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.55) 0%,
+      rgba(255, 240, 210, 0.07) 28%,
+      rgba(0, 0, 0, 0.05) 52%,
+      rgba(0, 0, 0, 0.5) 100%
+    ),
+    var(--leather);
+  background-size: 300px 300px, 100% 100%, 100% 100%;
+  box-shadow:
+    inset 0 0 0 1px rgba(0, 0, 0, 0.5),
+    2px 0 4px rgba(0, 0, 0, 0.5);
+  color: rgba(226, 206, 160, 0.82);
+  /* Hover usa `translate` (independente do `transform` animado pelo GSAP). */
+  transition:
+    translate 0.7s var(--ease-out),
+    filter 0.7s var(--ease-out);
+}
+.book--filler {
+  opacity: 0.8;
+  filter: brightness(0.75);
+}
+.book-band {
+  width: 100%;
+  height: 7px;
+  border-top: 1px solid rgba(168, 137, 78, 0.55);
+  border-bottom: 1px solid rgba(168, 137, 78, 0.55);
+}
+.book-title {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  padding: 10px 0;
+  font-family: var(--serif);
+  font-size: 17px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.book-vol {
+  font: 400 8px/1 var(--mono);
+  letter-spacing: 0.05em;
+  color: rgba(226, 206, 160, 0.5);
+  margin-bottom: 8px;
+}
+.book--reserved {
+  --leather: #15141a !important;
+  border: 1px dashed rgba(166, 139, 216, 0.35);
+  color: var(--paper-mute);
+}
+.book.is-active {
+  translate: 0 -14px;
+  filter: brightness(1.25);
+  color: #f0dcb0;
+}
+.book.is-active::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -10px;
+  width: 5px;
+  height: 5px;
+  background: var(--violet);
+  transform: translateX(-50%) rotate(45deg);
+}
+@media (hover: hover) {
+  .book:not(.book--filler):hover {
+    translate: 0 -14px;
+    filter: brightness(1.25);
+  }
+}
+/* Volume inclinado no fim da fileira. */
+.book-lean {
+  flex: none;
+  width: 22px;
+  height: 70%;
+  margin-left: 18px;
+  background: linear-gradient(90deg, #1c1714, #2a211a 40%, #120e0b);
+  transform-origin: bottom left;
+  transform: rotate(14deg);
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.5);
+}
+
+/* ——— Ficha catalográfica ——— */
+.catalog {
+  position: sticky;
+  top: calc(var(--nav-h) + 48px);
+}
+.catalog-card {
+  position: relative;
+  border: 1px solid rgba(168, 137, 78, 0.35);
+  background:
+    var(--tex-fiber),
+    repeating-linear-gradient(180deg, transparent 0 31px, rgba(230, 230, 230, 0.05) 31px 32px),
+    linear-gradient(170deg, #1d160f, #110d0a);
+  background-size: 400px 400px, 100% 100%, 100% 100%;
+  box-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.9);
+}
+.catalog-card::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  width: 40px;
+  height: 1px;
+  background: var(--violet);
+}
+.catalog-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 20px;
+  border-bottom: 1px solid rgba(214, 130, 90, 0.35);
+}
+.catalog-head .t-meta {
+  color: var(--paper);
+}
+.catalog-body {
+  display: grid;
+  gap: 12px;
+  padding: 26px 20px 30px;
+  min-height: 210px;
+  align-content: start;
+}
+.catalog-title {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: clamp(40px, 3.6vw, 60px);
+  line-height: 1;
+}
+.catalog-context {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 19px;
+  line-height: 1.4;
+  color: var(--paper-dim);
+}
+.catalog-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 20px;
+  border-top: 1px solid var(--line);
+}
+.catalog-hole {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--ink);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(168, 137, 78, 0.3);
+}
+.catalog-hint {
+  margin-top: 14px;
+  font-size: 10px;
+}
+
+@media (max-width: 960px) {
+  .library-room {
+    grid-template-columns: 1fr;
+  }
+  /* A ficha acompanha a leitura, ancorada na base da tela. */
+  .catalog {
+    position: sticky;
+    top: auto;
+    bottom: 12px;
+    z-index: 5;
+    order: 2;
+  }
+  .catalog-body {
+    min-height: 0;
+    padding: 10px 16px 12px;
+    gap: 2px;
+  }
+  .catalog-body > .t-mono {
+    display: none;
+  }
+  .catalog-title {
+    font-size: 28px;
+  }
+  .catalog-context {
+    font-size: 15px;
+  }
+  .catalog-foot,
+  .catalog-hint {
+    display: none;
+  }
+  .catalog-head {
+    padding: 8px 16px;
+  }
+}
+@media (max-width: 560px) {
+  .shelf-books {
+    padding-inline: 12px;
+    height: 200px;
+  }
+  .book--filler:nth-of-type(n + 4) {
+    display: none;
+  }
+  .book-title {
+    font-size: 15px;
+  }
+}
