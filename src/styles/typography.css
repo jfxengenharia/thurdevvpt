@@ -7,16 +7,8 @@
   font-display: block;
 }
 
-/* Might (Funtype Co., gratuita para uso pessoal): títulos e destaques.
-   Peso único: sem negrito/itálico sintetizados pelo navegador. */
-@font-face {
-  font-family: "Might";
-  src: url("../assets/fonts/might.ttf") format("truetype");
-  font-weight: 100 900;
-  font-style: normal;
-  font-display: swap;
-}
-
+/* Oswald (Google Fonts, OFL) nos títulos e destaques, carregada no index.html.
+   Não tem itálico: o navegador não sintetiza um itálico falso. */
 html {
   font-synthesis: none;
 }
