@@ -129,7 +129,7 @@ criado antes dos gatilhos das seções seguintes).
 |---|---|
 | Hero (fundo) | Rafael — *A Escola de Atenas* (1509–1511), Vaticano |
 | Hero (quadro) | Apolo — detalhe da *Escola de Atenas* |
-| Summer IA | Botticelli — *O Nascimento de Vênus* (c. 1485), Uffizi |
+| Summer IA | Botticelli — *Palas e o Centauro* (c. 1482), Uffizi — sabedoria guiando o instinto |
 | BIM Elétrico | Rafael — *O Triunfo de Galateia* (c. 1512), Villa Farnesina |
 | Acompanhamento Pessoal | Ticiano — *Baco e Ariadne* (1520–1523), National Gallery |
 | Sobre | Leonardo — *Homem Vitruviano* (c. 1490), Gallerie dell'Accademia |

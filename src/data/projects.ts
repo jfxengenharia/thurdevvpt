@@ -33,7 +33,7 @@ export const projects: Project[] = [
       "Núcleo em Python com loop agentic, executor de ferramentas, memória de sessão e camada de segurança em sete etapas (filtro de ferramentas, validação de argumentos, caminhos protegidos, aprovação humana para execução de código, bloqueio de comandos destrutivos e de segredos, proteção anti-SSRF e subprocessos isolados com timeout). Usa Gemini como modelo principal com fallback automático para Groq. Duas interfaces: CLI no terminal e GUI web com FastAPI e WebSocket.",
     technologies: ["Python", "FastAPI", "WebSocket", "Gemini", "Groq", "Playwright", "Pydantic"],
     links: [{ label: "Repositório", href: "https://github.com/thurdevv/summerAgent" }],
-    artwork: artworks.venus,
+    artwork: artworks.palas,
     screens: [
       {
         src: summerScreen,

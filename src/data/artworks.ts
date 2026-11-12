@@ -1,7 +1,7 @@
 import type { Artwork, ArtworkImage } from "./types";
 import escolaDeAtenas from "../assets/artworks/escola-de-atenas.webp";
 import apolo from "../assets/artworks/apolo.webp";
-import nascimentoDeVenus from "../assets/artworks/nascimento-de-venus.webp";
+import palasEOCentauro from "../assets/artworks/palas-e-o-centauro.webp";
 import triunfoDeGalateia from "../assets/artworks/triunfo-de-galateia.webp";
 import bacoEAriadne from "../assets/artworks/baco-e-ariadne.webp";
 import homemVitruviano from "../assets/artworks/homem-vitruviano.webp";
@@ -38,15 +38,15 @@ export const artworks = {
       position: "50% 40%",
     },
   },
-  venus: {
+  palas: {
     plate: "Fig. II",
-    caption: "Botticelli · O Nascimento de Vênus",
-    medium: "Têmpera sobre tela, c. 1485 · Galleria degli Uffizi",
+    caption: "Botticelli · Palas e o Centauro",
+    medium: "Têmpera sobre tela, c. 1482 · Galleria degli Uffizi",
     study: "spiral",
     image: {
-      src: nascimentoDeVenus,
-      alt: "O Nascimento de Vênus, de Botticelli: a deusa sobre uma concha, levada pelos ventos à costa.",
-      position: "50% 50%",
+      src: palasEOCentauro,
+      alt: "Palas e o Centauro, de Botticelli: Atena, deusa da sabedoria, segura o centauro pelos cabelos diante de uma rocha à beira-mar.",
+      position: "50% 30%",
     },
   },
   galateia: {
