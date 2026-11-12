@@ -1,4 +1,5 @@
 import type { Project } from "./types";
+import { artworks } from "./artworks";
 import summerScreen from "../assets/screens/summer-ia.webp";
 import bimScreen from "../assets/screens/bim-eletrico.webp";
 import acompResumoScreen from "../assets/screens/acompanhamento-resumo.webp";
@@ -10,10 +11,9 @@ import acompFinancasScreen from "../assets/screens/acompanhamento-financas.webp"
  * Fonte: repositórios públicos de github.com/thurdevv (README de cada projeto).
  * Por decisão do autor, Drizzle e Vite não são listados nas stacks.
  *
- * A obra de cada projeto é a captura do próprio sistema (`screens[0]`, exibida
- * na moldura); as demais capturas aparecem na ficha técnica. Foram feitas com
- * cada sistema rodando a partir do próprio repositório (nov. 2026); os dados
- * que aparecem nelas são fictícios, criados só para a captura.
+ * As obras de cada projeto vêm de `artworks.ts`. As capturas (`screens`) foram
+ * feitas com cada sistema rodando a partir do próprio repositório (nov. 2026);
+ * os dados que aparecem nelas são fictícios, criados só para a captura.
  */
 export const projects: Project[] = [
   {
@@ -33,6 +33,7 @@ export const projects: Project[] = [
       "Núcleo em Python com loop agentic, executor de ferramentas, memória de sessão e camada de segurança em sete etapas (filtro de ferramentas, validação de argumentos, caminhos protegidos, aprovação humana para execução de código, bloqueio de comandos destrutivos e de segredos, proteção anti-SSRF e subprocessos isolados com timeout). Usa Gemini como modelo principal com fallback automático para Groq. Duas interfaces: CLI no terminal e GUI web com FastAPI e WebSocket.",
     technologies: ["Python", "FastAPI", "WebSocket", "Gemini", "Groq", "Playwright", "Pydantic"],
     links: [{ label: "Repositório", href: "https://github.com/thurdevv/summerAgent" }],
+    artwork: artworks.venus,
     screens: [
       {
         src: summerScreen,
@@ -61,6 +62,7 @@ export const projects: Project[] = [
       { label: "Ver online", href: "https://dashboardeletrica.vercel.app" },
       { label: "Repositório", href: "https://github.com/thurdevv/dashboard_eletrica" },
     ],
+    artwork: artworks.galateia,
     screens: [
       {
         src: bimScreen,
@@ -86,6 +88,7 @@ export const projects: Project[] = [
       "Monorepo com cliente em React e API REST em Node.js com Express, separada por domínio (saúde, finanças, estudos, projetos). Banco PostgreSQL com schema criado automaticamente na inicialização da API. Deploy por blueprint no Render: banco gerenciado, serviço da API com CORS restrito ao frontend e site estático.",
     technologies: ["React", "TypeScript", "Node.js", "Express", "PostgreSQL", "Render"],
     links: [{ label: "Repositório", href: "https://github.com/thurdevv/acompanhamento" }],
+    artwork: artworks.baco,
     screens: [
       {
         src: acompResumoScreen,

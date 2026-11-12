@@ -21,7 +21,7 @@ export function ExhibitDetail({ project, open, id, onClose }: ExhibitDetailProps
   const ref = useRef<HTMLDivElement>(null);
   const prevOpen = useRef(open);
   const pending = new Set(project.pendingFields ?? []);
-  const extraScreens = project.screens.slice(1);
+  const extraScreens = project.screens?.slice(1) ?? [];
 
   useLayoutEffect(() => {
     const el = ref.current;
@@ -134,7 +134,7 @@ export function ExhibitDetail({ project, open, id, onClose }: ExhibitDetailProps
           </div>
         </div>
 
-        {/* A primeira captura já está na moldura; aqui ficam as demais. */}
+        {/* A primeira captura já aparece na placa da obra; aqui ficam as demais. */}
         {extraScreens.length > 0 && (
           <div className="xd-screens">
             <div className="xd-screens-head xd-reveal">

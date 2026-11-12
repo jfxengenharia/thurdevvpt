@@ -235,17 +235,6 @@
 .frame-img {
   filter: sepia(0.28) saturate(0.74) contrast(1.14) brightness(0.8);
 }
-/* Captura de sistema: cores fiéis e só um traço da textura analógica,
-   para a interface continuar legível dentro da moldura. */
-.frame--screen .frame-img {
-  filter: none;
-}
-.frame--screen .frame-texture {
-  opacity: 0.18;
-}
-.frame--screen .frame-shade {
-  opacity: 0.45;
-}
 /* Construção técnica sobre a obra (fotomontagem Nous). */
 .study--overlay {
   opacity: 0.85;

@@ -18,8 +18,6 @@ interface FrameProps {
   eager?: boolean;
   /** Linhas de construção (HUD) sobre a obra. */
   hud?: boolean;
-  /** "screen": captura de sistema — sem envelhecimento de cor nem HUD. */
-  variant?: "painting" | "screen";
   className?: string;
   children?: ReactNode;
 }
@@ -44,13 +42,11 @@ export function Frame({
   drawStudy = true,
   eager = false,
   hud = true,
-  variant = "painting",
   className,
   children,
 }: FrameProps) {
-  const screen = variant === "screen";
   return (
-    <figure className={`frame frame--${tone}${screen ? " frame--screen" : ""}${className ? ` ${className}` : ""}`}>
+    <figure className={`frame frame--${tone}${className ? ` ${className}` : ""}`}>
       <div className="frame-moulding">
         <div
           className="frame-canvas"
@@ -70,7 +66,7 @@ export function Frame({
                     decoding="async"
                   />
                   {/* Fotomontagem Nous: construção técnica sobre a obra clássica. */}
-                  {hud && !screen && <Study variant={artwork.study} plate={artwork.plate} draw={drawStudy} overlay />}
+                  {hud && <Study variant={artwork.study} plate={artwork.plate} draw={drawStudy} overlay />}
                 </>
               ) : (
                 <Study variant={artwork.study} plate={artwork.plate} draw={drawStudy} />

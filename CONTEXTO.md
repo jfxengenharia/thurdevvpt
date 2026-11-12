@@ -76,7 +76,7 @@ src/
   styles/          tokens.css (cores/fontes/texturas) + um CSS por área
   assets/
     artworks/        pinturas em WebP (otimizadas)
-    screens/         capturas dos sistemas em execução (moldura dos projetos + ficha técnica)
+    screens/         capturas dos sistemas em execução (placa dos projetos + ficha técnica)
     textures/        texturas SVG procedurais (grain, photocopy, fiber, marble, stone)
     fonts/           karstar-free.ttf (monograma)
 public/favicon.svg
@@ -122,15 +122,17 @@ criado antes dos gatilhos das seções seguintes).
 | 10 | Títulos e destaques em **Oswald** (sans condensada, sem itálico), no lugar da serifada do `style.md` §6 | Decisão posterior ao `style.md` (commit `9ab0052`). A variável CSS continua se chamando `--serif` e os `font-style: italic` ficaram sem efeito |
 | 11 | **Seção Pesquisa ("Caderno de investigações") removida**; as salas passaram a ser I–V | Pedido do usuário (12/11/2026) |
 | 12 | Sem "Edição MMXXVI" em lugar nenhum (Hero, navbar, rodapé) nem localização acima do nome | Pedido do usuário |
-| 13 | **Projetos usam a captura do sistema na moldura** (16:10, sem envelhecimento nem HUD), no lugar das pinturas. Capturas extras ficam na ficha técnica ("Registro"). As pinturas de Botticelli, Galateia e Ticiano foram removidas | Pedido do usuário. Feitas rodando cada repositório com dados fictícios |
+| 13 | Projetos: **pintura na moldura + captura do sistema sempre visível na placa**, abaixo do resumo. Capturas extras ficam na ficha técnica ("Registro"). Testado também com a captura no lugar da pintura (commit `9ff0992`) e revertido | Pedido do usuário. Pintura mantém a identidade (70% clássico); a captura prova o trabalho. Feitas rodando cada repositório com dados fictícios |
 
 ### Acervo atual (`src/data/artworks.ts`)
 | Onde | Obra |
 |---|---|
 | Hero (fundo) | Rafael — *A Escola de Atenas* (1509–1511), Vaticano |
 | Hero (quadro) | Apolo — detalhe da *Escola de Atenas* |
+| Summer IA | Botticelli — *O Nascimento de Vênus* (c. 1485), Uffizi |
+| BIM Elétrico | Rafael — *O Triunfo de Galateia* (c. 1512), Villa Farnesina |
+| Acompanhamento Pessoal | Ticiano — *Baco e Ariadne* (1520–1523), National Gallery |
 | Sobre | Leonardo — *Homem Vitruviano* (c. 1490), Gallerie dell'Accademia |
-| Projetos | Capturas dos próprios sistemas (`src/assets/screens/`), não pinturas — ver decisão 13 |
 
 Para trocar uma obra: substituir o arquivo em `assets/artworks/` e a etiqueta em `artworks.ts`.
 A legenda do desenho técnico sobre a obra usa o mesmo número da placa (`plate`).
@@ -146,7 +148,7 @@ A legenda do desenho técnico sobre a obra usa o mesmo número da placa (`plate`
 - [ ] Período e local da atuação como técnico em informática (`experience.ts`)
 - [ ] Cargo e atividades na JFX Engenharia (hoje só empresa e período)
 - [x] Objetivo, arquitetura, ano e links dos 3 projetos (`projects.ts`)
-- [x] Capturas dos projetos (na moldura de cada projeto)
+- [x] Capturas dos projetos (na placa de cada projeto; as obras continuam sendo pinturas)
 - [ ] Biblioteca (`technologies.ts`) ainda reflete a versão anterior: não lista Python,
       FastAPI, Next.js e outras tecnologias que aparecem nos projetos
 - [ ] O campo `year` dos projetos existe nos dados mas não é exibido em lugar nenhum

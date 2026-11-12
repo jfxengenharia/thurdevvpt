@@ -94,11 +94,9 @@ export interface Project {
   architecture: string;
   technologies: string[];
   links: ProjectLink[];
-  /**
-   * Capturas do sistema em execução. A primeira vai na moldura da exposição;
-   * as demais aparecem na ficha técnica.
-   */
-  screens: [ProjectScreen, ...ProjectScreen[]];
+  artwork: Artwork;
+  /** Capturas do sistema em execução (registro fotográfico da obra). */
+  screens?: ProjectScreen[];
   provisional?: boolean;
   /** Campos específicos ainda não documentados. */
   pendingFields?: Array<"objective" | "architecture" | "links" | "year">;

@@ -140,6 +140,32 @@
 .exhibit-summary {
   max-width: 460px;
 }
+/* Sistema em execução — sempre visível na placa, abaixo do resumo. */
+.exhibit-screen {
+  margin: 26px 0 0;
+  max-width: 520px;
+}
+.exhibit-screen-img {
+  padding: 5px;
+  border: 1px solid var(--line-strong);
+  background: rgba(11, 11, 16, 0.6);
+}
+.exhibit-screen-img img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  object-position: top center;
+}
+.exhibit-screen figcaption {
+  margin-top: 10px;
+  font-size: 13px;
+  color: var(--paper-dim);
+}
+.exhibit-screen figcaption .t-mono {
+  color: var(--paper-mute);
+}
 .exhibit-facts {
   display: grid;
   gap: 12px;
