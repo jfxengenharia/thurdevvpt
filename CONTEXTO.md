@@ -145,7 +145,7 @@ A legenda do desenho técnico sobre a obra usa o mesmo número da placa (`plate`
 - [ ] URL do LinkedIn (hoje aponta para `linkedin.com`, marcado como provisório)
 - [x] Texto do perfil (Sobre); o bloco "Trajetória" do Sobre foi removido
 - [x] Especialidades e áreas de estudo (ficha acadêmica)
-- [ ] Período e local da atuação como técnico em informática (`experience.ts`)
+- [ ] Local da atuação como técnico em informática (`experience.ts`). O período é 01.26 até o mês atual, calculado no navegador (`ongoingSince`)
 - [ ] Cargo e atividades na JFX Engenharia (hoje só empresa e período)
 - [x] Objetivo, arquitetura, ano e links dos 3 projetos (`projects.ts`)
 - [x] Capturas dos projetos (na placa de cada projeto; as obras continuam sendo pinturas)
