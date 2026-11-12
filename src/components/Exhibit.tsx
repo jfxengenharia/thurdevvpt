@@ -1,4 +1,4 @@
-import type { Project } from "../data/types";
+import type { Artwork, Project } from "../data/types";
 import { Frame } from "./Frame";
 import { ExhibitDetail } from "./ExhibitDetail";
 import { Icon } from "./Icon";
@@ -18,6 +18,16 @@ export function Exhibit({ project, index, total, open, onToggle }: ExhibitProps)
   const detailId = `ficha-${project.id}`;
   const side = index % 2 === 0 ? "left" : "right";
   const toggle = () => onToggle(project.id);
+  const [screen] = project.screens;
+  const plate = `${project.inventory}.1`;
+  // A captura do sistema ocupa a moldura no lugar de uma pintura.
+  const artwork: Artwork = {
+    plate,
+    caption: screen.caption,
+    medium: "Captura do sistema em execução",
+    study: "column",
+    image: { src: screen.src, alt: screen.alt, position: "50% 0%" },
+  };
 
   return (
     <article
@@ -28,7 +38,7 @@ export function Exhibit({ project, index, total, open, onToggle }: ExhibitProps)
       <div className="exhibit-main">
         <div className="exhibit-art">
           <div className="exhibit-art-float" data-parallax={side === "left" ? "0.06" : "0.1"}>
-            <Frame artwork={project.artwork} ratio="4 / 5" showPlate={false} />
+            <Frame artwork={artwork} ratio="16 / 10" variant="screen" showPlate={false} />
             <button
               type="button"
               className="exhibit-hit"
@@ -73,7 +83,7 @@ export function Exhibit({ project, index, total, open, onToggle }: ExhibitProps)
             </div>
           </dl>
           <p className="exhibit-caption" data-reveal="fade">
-            <span className="t-mono">{project.artwork.plate}</span> {project.artwork.caption}
+            <span className="t-mono">{plate}</span> {screen.caption}
           </p>
           <div data-reveal="fade">
             <button

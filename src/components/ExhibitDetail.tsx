@@ -21,6 +21,7 @@ export function ExhibitDetail({ project, open, id, onClose }: ExhibitDetailProps
   const ref = useRef<HTMLDivElement>(null);
   const prevOpen = useRef(open);
   const pending = new Set(project.pendingFields ?? []);
+  const extraScreens = project.screens.slice(1);
 
   useLayoutEffect(() => {
     const el = ref.current;
@@ -133,22 +134,23 @@ export function ExhibitDetail({ project, open, id, onClose }: ExhibitDetailProps
           </div>
         </div>
 
-        {project.screens && project.screens.length > 0 && (
+        {/* A primeira captura já está na moldura; aqui ficam as demais. */}
+        {extraScreens.length > 0 && (
           <div className="xd-screens">
             <div className="xd-screens-head xd-reveal">
               <span className="t-meta">Registro</span>
               <span className="xd-head-rule" />
               <span className="t-mono">Sistema em execução</span>
             </div>
-            <div className={`xd-screens-grid${project.screens.length > 1 ? " xd-screens-grid--pair" : ""}`}>
-              {project.screens.map((s, i) => (
+            <div className={`xd-screens-grid${extraScreens.length > 1 ? " xd-screens-grid--pair" : ""}`}>
+              {extraScreens.map((s, i) => (
                 <figure className="xd-screen xd-reveal" key={s.src}>
                   <div className="xd-screen-img">
                     <img src={s.src} alt={s.alt} loading="lazy" decoding="async" width={1440} height={900} />
                   </div>
                   <figcaption>
                     <span className="t-mono">
-                      {project.inventory}.{i + 1}
+                      {project.inventory}.{i + 2}
                     </span>{" "}
                     {s.caption}
                   </figcaption>
