@@ -3,19 +3,19 @@ import type { ExperienceEntry } from "./types";
 /**
  * Trajetória — ordem cronológica (mais antigo primeiro).
  *
- * As formações vêm da versão anterior do portfólio; os períodos ainda não
- * foram informados. A entrada de experiência profissional é um espaço
- * reservado e não descreve nenhum vínculo real.
+ * Informado pelo autor: técnico em informática como experiência, ADS na
+ * Uninassau Recife (polo Boa Viagem), JFX Engenharia de janeiro a novembro
+ * de 2026 e a Summer IA como projeto pessoal. Período e local da atuação
+ * como técnico ainda não foram informados.
  */
 export const experience: ExperienceEntry[] = [
   {
     id: "tecnico",
     period: "Período a definir",
-    kind: "Formação",
+    kind: "Experiência",
     title: "Técnico em Informática",
-    institution: "Instituição a definir",
-    description:
-      "Formação técnica que deu início ao estudo de programação, redes e sistemas.",
+    institution: "Local a definir",
+    description: "Atuação como técnico em informática.",
     provisional: true,
   },
   {
@@ -23,28 +23,25 @@ export const experience: ExperienceEntry[] = [
     period: "Em curso",
     kind: "Formação",
     title: "Análise e Desenvolvimento de Sistemas",
-    institution: "Instituição a definir",
+    institution: "Uninassau Recife · polo Boa Viagem",
     description:
       "Graduação tecnológica com ênfase em engenharia de software, bancos de dados e desenvolvimento de sistemas.",
-    provisional: true,
   },
   {
-    id: "experiencia-reservada",
-    period: "A definir",
+    id: "jfx-engenharia",
+    period: "01.26 — 11.26",
     kind: "Experiência",
-    title: "Experiência profissional",
-    institution: "Espaço reservado",
-    description:
-      "Registro reservado para experiências profissionais, estágios ou projetos com clientes.",
-    provisional: true,
+    title: "JFX Engenharia",
+    institution: "Experiência profissional",
+    description: "Experiência profissional de janeiro a novembro de 2026.",
   },
   {
-    id: "portfolio",
+    id: "summer-ia",
     period: "2026",
     kind: "Marco",
-    title: "Academia · portfólio Cyber-Classical",
+    title: "Summer IA",
     institution: "Projeto pessoal",
     description:
-      "Construção deste portfólio com React, TypeScript e GSAP: estudo de direção de arte, animação e arquitetura de interface.",
+      "Agente de IA que ensina programação executando tarefas reais: lê arquivos, escreve e roda código e navega na web. Núcleo em Python com FastAPI, memória de sessão e camada de segurança própria.",
   },
 ];

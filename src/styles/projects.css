@@ -300,6 +300,52 @@
   align-items: center;
   gap: 10px;
 }
+/* Registro — capturas do sistema em execução, como fotos de documentação. */
+.xd-screens {
+  margin-top: clamp(40px, 5vw, 64px);
+}
+.xd-screens-head {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 24px;
+}
+.xd-screens-head .t-meta {
+  color: var(--paper);
+}
+.xd-screens-grid {
+  display: grid;
+  gap: clamp(20px, 3vw, 36px);
+}
+.xd-screens-grid--pair {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.xd-screen {
+  margin: 0;
+}
+.xd-screen-img {
+  position: relative;
+  padding: 6px;
+  border: 1px solid var(--line-strong);
+  background: rgba(11, 11, 16, 0.6);
+}
+.xd-screen-img img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  object-position: top center;
+}
+.xd-screen figcaption {
+  margin-top: 12px;
+  font-size: 13px;
+  color: var(--paper-dim);
+}
+.xd-screen figcaption .t-mono {
+  color: var(--paper-mute);
+}
+
 .xd-close {
   display: inline-flex;
   align-items: center;
@@ -337,7 +383,8 @@
   .exhibit--right .exhibit-art-float {
     margin-left: 10%;
   }
-  .xd-grid {
+  .xd-grid,
+  .xd-screens-grid--pair {
     grid-template-columns: 1fr;
   }
   .xd-side {

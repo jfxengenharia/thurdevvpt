@@ -133,6 +133,31 @@ export function ExhibitDetail({ project, open, id, onClose }: ExhibitDetailProps
           </div>
         </div>
 
+        {project.screens && project.screens.length > 0 && (
+          <div className="xd-screens">
+            <div className="xd-screens-head xd-reveal">
+              <span className="t-meta">Registro</span>
+              <span className="xd-head-rule" />
+              <span className="t-mono">Sistema em execução</span>
+            </div>
+            <div className={`xd-screens-grid${project.screens.length > 1 ? " xd-screens-grid--pair" : ""}`}>
+              {project.screens.map((s, i) => (
+                <figure className="xd-screen xd-reveal" key={s.src}>
+                  <div className="xd-screen-img">
+                    <img src={s.src} alt={s.alt} loading="lazy" decoding="async" width={1440} height={900} />
+                  </div>
+                  <figcaption>
+                    <span className="t-mono">
+                      {project.inventory}.{i + 1}
+                    </span>{" "}
+                    {s.caption}
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
+          </div>
+        )}
+
         <button type="button" className="xd-close xd-reveal" onClick={onClose}>
           <Icon name="close" size={16} />
           <span className="t-meta">Fechar ficha</span>

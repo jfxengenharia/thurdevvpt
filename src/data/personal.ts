@@ -4,8 +4,8 @@ import { artworks } from "./artworks";
 /**
  * Informações pessoais.
  *
- * Fonte: versão anterior do portfólio (nome, formação, foco em backend,
- * Recife e coordenadas). O sobrenome "Plácido" foi inferido a partir do brasão
+ * Fonte: versão anterior do portfólio (nome, foco em backend, Recife e
+ * coordenadas) e informações passadas pelo autor (perfil e ficha acadêmica). O sobrenome "Plácido" foi inferido a partir do brasão
  * da família Plácido — confirme ou ajuste aqui.
  * Campos com `provisional: true` aguardam o conteúdo definitivo.
  */
@@ -21,17 +21,15 @@ export const personal: Personal = {
     "Técnico em informática e estudante de Análise e Desenvolvimento de Sistemas. Estudo e construo sistemas, APIs e integrações: a parte do software que sustenta a experiência.",
   heroArtwork: artworks.apolo,
   about: {
-    lead: "Meu foco é o desenvolvimento backend: compreender problemas, projetar estruturas e transformar ideias em aplicações confiáveis.",
+    lead: "Trabalho com desenvolvimento backend e me interesso justamente pelo que acontece nos bastidores de uma aplicação: a modelagem dos dados, os contratos entre serviços e a automação daquelas tarefas manuais que travam a operação.",
     paragraphs: [
-      "Interesso-me pela engenharia que fica por trás da interface: a modelagem dos dados, os contratos entre serviços e a automação de processos que hoje dependem de trabalho manual.",
-      "Trato cada projeto como objeto de estudo: entender o problema antes da ferramenta, documentar as decisões e revisar o que foi construído.",
+      "Encaro cada projeto de forma bem prática — primeiro entendo o problema real, depois escolho a ferramenta. Também faço questão de documentar o porquê das decisões técnicas e revisar o que foi feito para entregar algo sólido.",
     ],
-    trajectory: {
-      text: "Resumo da trajetória a ser escrito: origem do interesse por tecnologia, momentos de virada e direção atual.",
-      provisional: true,
-    },
     fields: [
-      { label: "Formação", value: ["Técnico em Informática", "Análise e Desenvolvimento de Sistemas (em curso)"] },
+      {
+        label: "Formação",
+        value: ["Análise e Desenvolvimento de Sistemas (em curso)", "Uninassau Recife · polo Boa Viagem"],
+      },
       { label: "Base", value: "Recife, PE, Brasil" },
       { label: "Foco", value: "Desenvolvimento backend" },
       {
@@ -40,8 +38,7 @@ export const personal: Personal = {
       },
       {
         label: "Especialidades",
-        value: ["A definir"],
-        provisional: true,
+        value: ["Java", "Python", "TypeScript"],
       },
       {
         label: "Conhecimentos",
@@ -49,8 +46,7 @@ export const personal: Personal = {
       },
       {
         label: "Áreas de estudo",
-        value: ["Engenharia de software", "Bancos de dados relacionais", "Arquitetura de sistemas"],
-        provisional: true,
+        value: ["Análise e Desenvolvimento de Sistemas", "Engenharia de software"],
       },
     ],
   },
@@ -63,7 +59,6 @@ export const personal: Personal = {
       { label: "LinkedIn", href: "https://linkedin.com/", handle: "linkedin.com/in/…", provisional: true },
     ],
   },
-  edition: "MMXXVI",
 };
 
 export const navigation: NavItem[] = [
@@ -71,6 +66,5 @@ export const navigation: NavItem[] = [
   { id: "obras", numeral: "II", label: "Obras" },
   { id: "biblioteca", numeral: "III", label: "Biblioteca" },
   { id: "trajetoria", numeral: "IV", label: "Trajetória" },
-  { id: "pesquisa", numeral: "V", label: "Pesquisa" },
-  { id: "contato", numeral: "VI", label: "Contato" },
+  { id: "contato", numeral: "V", label: "Contato" },
 ];

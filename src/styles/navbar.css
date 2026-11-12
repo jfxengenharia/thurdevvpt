@@ -18,6 +18,10 @@
 .nav.is-hidden {
   transform: translateY(-100%);
 }
+/* Navegação por teclado: a barra reaparece quando o foco entra nela. */
+.nav.is-hidden:has(:focus-visible) {
+  transform: none;
+}
 .nav-inner {
   height: 100%;
   max-width: var(--max);
@@ -40,11 +44,6 @@
 }
 .mmenu-monogram {
   font-size: 52px;
-}
-.nav-edition {
-  padding-left: 14px;
-  border-left: 1px solid var(--line-strong);
-  font-size: 10px;
 }
 
 .nav-links ol {
@@ -203,8 +202,7 @@
   }
 }
 @media (max-width: 960px) {
-  .nav-links,
-  .nav-edition {
+  .nav-links {
     display: none;
   }
   .nav-menu-btn {

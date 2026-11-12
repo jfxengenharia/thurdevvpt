@@ -18,7 +18,7 @@ function useRecifeTime(): string {
   return time;
 }
 
-/** Sala VI — correspondência. Editorial, minimalista. */
+/** Sala V — correspondência. Editorial, minimalista. */
 export function Contact() {
   const { contact } = personal;
   const time = useRecifeTime();
@@ -28,10 +28,10 @@ export function Contact() {
       <SectionLight x="50%" y="60%" />
       <div className="container">
         <div className="sh-rule-row">
-          <span className="t-numeral sh-numeral">VI</span>
+          <span className="t-numeral sh-numeral">V</span>
           <span className="t-meta sh-label">Contato</span>
           <span className="sh-rule" data-reveal="rule" aria-hidden="true" />
-          <span className="t-mono sh-meta">Sala VI / VI · Correspondência</span>
+          <span className="t-mono sh-meta">Sala V / V · Correspondência</span>
         </div>
 
         <div className="contact-grid">

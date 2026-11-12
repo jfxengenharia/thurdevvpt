@@ -47,7 +47,7 @@ export function Timeline() {
           id="trajetoria-title"
           numeral="IV"
           label="Trajetória"
-          meta="Sala IV / VI · Cronologia"
+          meta="Sala IV / V · Cronologia"
           kicker="Formação, experiências e marcos"
           title={"Linha do\n*tempo*"}
           intro="Registro cronológico de estudos, experiências e conquistas. Os períodos ainda não informados aparecem como provisórios."

@@ -1,5 +1,9 @@
 import type { Project } from "./types";
 import { artworks } from "./artworks";
+import summerScreen from "../assets/screens/summer-ia.webp";
+import bimScreen from "../assets/screens/bim-eletrico.webp";
+import acompResumoScreen from "../assets/screens/acompanhamento-resumo.webp";
+import acompFinancasScreen from "../assets/screens/acompanhamento-financas.webp";
 
 /**
  * Projetos, apresentados como obras da exposição.
@@ -7,7 +11,9 @@ import { artworks } from "./artworks";
  * Fonte: repositórios públicos de github.com/thurdevv (README de cada projeto).
  * Por decisão do autor, Drizzle e Vite não são listados nas stacks.
  *
- * As obras de cada projeto vêm de `artworks.ts` (substitua por imagens do projeto quando houver).
+ * As obras de cada projeto vêm de `artworks.ts`. As capturas (`screens`) foram
+ * feitas com cada sistema rodando a partir do próprio repositório (nov. 2026);
+ * os dados que aparecem nelas são fictícios, criados só para a captura.
  */
 export const projects: Project[] = [
   {
@@ -28,6 +34,13 @@ export const projects: Project[] = [
     technologies: ["Python", "FastAPI", "WebSocket", "Gemini", "Groq", "Playwright", "Pydantic"],
     links: [{ label: "Repositório", href: "https://github.com/thurdevv/summerAgent" }],
     artwork: artworks.venus,
+    screens: [
+      {
+        src: summerScreen,
+        alt: "Interface web da Summer IA: conversa com plano de execução em etapas, arquivos criados, editor de código e terminal.",
+        caption: "Interface web · plano de execução, editor e terminal",
+      },
+    ],
   },
   {
     id: "bim-eletrico",
@@ -50,6 +63,13 @@ export const projects: Project[] = [
       { label: "Repositório", href: "https://github.com/thurdevv/dashboard_eletrica" },
     ],
     artwork: artworks.galateia,
+    screens: [
+      {
+        src: bimScreen,
+        alt: "BIM Elétrico com um modelo IFC de residência carregado no visualizador 3D, filtros por status e lista de pavimentos.",
+        caption: "Visualizador 3D · modelo IFC de exemplo com 108 elementos",
+      },
+    ],
   },
   {
     id: "acompanhamento-pessoal",
@@ -69,5 +89,17 @@ export const projects: Project[] = [
     technologies: ["React", "TypeScript", "Node.js", "Express", "PostgreSQL", "Render"],
     links: [{ label: "Repositório", href: "https://github.com/thurdevv/acompanhamento" }],
     artwork: artworks.baco,
+    screens: [
+      {
+        src: acompResumoScreen,
+        alt: "Tela de resumo do Acompanhamento Pessoal: água, sono, saldo do mês, projetos e estudos em andamento.",
+        caption: "Resumo · saúde, finanças, estudos e projetos",
+      },
+      {
+        src: acompFinancasScreen,
+        alt: "Tela de finanças do Acompanhamento Pessoal: receitas, despesas, saldo, transações e gastos por categoria.",
+        caption: "Finanças · transações e gastos por categoria",
+      },
+    ],
   },
 ];

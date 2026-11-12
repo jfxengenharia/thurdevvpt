@@ -64,6 +64,10 @@ export function Hero() {
               pin: true,
               scrub: 0.8,
               anticipatePin: 1,
+              // O pin empurra tudo o que vem abaixo. Ele precisa ser medido antes
+              // dos gatilhos criados mais cedo (ex.: seção ativa da Navbar),
+              // senão eles disparam ~85% de tela adiantados.
+              refreshPriority: 1,
             },
           })
           .to(".hero-canvas", { scale: 1.22, yPercent: 3 }, 0)
@@ -103,12 +107,6 @@ export function Hero() {
 
       <div className="hero-grid container">
         <div className="hero-copy">
-          <div className="hero-meta hero-reveal">
-            <span className="t-meta">Portfólio · Edição {personal.edition}</span>
-            <span className="hero-meta-rule" />
-            <span className="t-meta">{personal.location}</span>
-          </div>
-
           <RevealText
             as="h1"
             id="hero-title"

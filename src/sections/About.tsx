@@ -18,7 +18,7 @@ export function About() {
           id="sobre-title"
           numeral="I"
           label="Sobre"
-          meta="Sala I / VI · Ficha"
+          meta="Sala I / V · Ficha"
           kicker="Perfil acadêmico"
           title={"A engenharia\npor trás da *interface*"}
         />
@@ -44,17 +44,10 @@ export function About() {
               </p>
             ))}
 
-            <div className="about-trajectory" data-reveal="fade">
-              <span className="t-meta">Trajetória</span>
-              <p className="t-body">
-                {about.trajectory.text} {about.trajectory.provisional && <Provisional />}
-              </p>
-            </div>
-
             <div className="record" data-reveal="fade">
               <div className="record-head">
                 <span className="t-meta">Ficha acadêmica</span>
-                <span className="t-mono">Reg. AP-{personal.edition}</span>
+                <span className="t-mono">Reg. {personal.monogram}</span>
               </div>
               <dl className="record-list">
                 {about.fields.map((field) => (

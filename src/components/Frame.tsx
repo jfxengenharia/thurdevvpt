@@ -66,10 +66,10 @@ export function Frame({
                     decoding="async"
                   />
                   {/* Fotomontagem Nous: construção técnica sobre a obra clássica. */}
-                  {hud && <Study variant={artwork.study} draw={drawStudy} overlay />}
+                  {hud && <Study variant={artwork.study} plate={artwork.plate} draw={drawStudy} overlay />}
                 </>
               ) : (
-                <Study variant={artwork.study} draw={drawStudy} />
+                <Study variant={artwork.study} plate={artwork.plate} draw={drawStudy} />
               )}
             </div>
           </div>

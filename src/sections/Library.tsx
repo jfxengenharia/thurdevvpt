@@ -78,9 +78,9 @@ export function Library() {
           id="biblioteca-title"
           numeral="III"
           label="Biblioteca"
-          meta="Sala III / VI · Acervo"
+          meta="Sala III / V · Estantes"
           kicker="Tecnologias e conhecimentos"
-          title={"O acervo\nde *ferramentas*"}
+          title={"*Ferramentas*"}
           intro="Linguagens, frameworks, bancos de dados, ferramentas e infraestrutura, organizados por estante, com o contexto em que cada um é usado."
         />
 

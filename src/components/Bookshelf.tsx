@@ -59,7 +59,7 @@ export function Bookshelf({ shelf, activeKey, onSelect }: BookshelfProps) {
       </div>
 
       <div className="shelf-case">
-        <div className="shelf-books" role="list">
+        <div className="shelf-books" role="group" aria-label={`Estante ${shelf.numeral}: ${shelf.category}`}>
           <Filler seed={`${shelf.id}-a`} count={2} />
           {shelf.items.map((tech, i) => {
             const key = bookKey(shelf, tech);
@@ -68,7 +68,6 @@ export function Bookshelf({ shelf, activeKey, onSelect }: BookshelfProps) {
               <button
                 key={tech.name}
                 type="button"
-                role="listitem"
                 className={`book${active ? " is-active" : ""}${tech.provisional ? " book--reserved" : ""}`}
                 style={bookStyle(key, tech.name)}
                 onMouseEnter={() => onSelect(key)}

@@ -14,7 +14,6 @@ export const MQ = {
   motion: "(prefers-reduced-motion: no-preference)",
   reduced: "(prefers-reduced-motion: reduce)",
   desktop: "(min-width: 821px)",
-  mobile: "(max-width: 820px)",
 } as const;
 
 /** Curvas do sistema — lentas na saída, como movimento de câmera. */

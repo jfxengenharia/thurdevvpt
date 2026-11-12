@@ -1,6 +1,6 @@
 # CONTEXTO — Portfólio Cyber-Classical
 
-> Snapshot de 09/11/2026 · versão 0.1 (versionamento manual por zip)
+> Atualizado em 12/11/2026 · versionado em Git, publicado no GitHub Pages
 > Leia este arquivo antes de mexer no projeto — ou entregue-o a qualquer IA/dev como ponto de partida.
 
 ---
@@ -46,6 +46,10 @@ npm run typecheck  # só os tipos
 
 Se a porta 5173 estiver ocupada (ex.: outro projeto Vite), o Vite usa a próxima (5174…).
 
+**Publicação:** todo push na `main` dispara `.github/workflows/deploy.yml` (build + GitHub
+Pages). Endereço: <https://jfxengenharia.github.io/thurdevvpt/>. O `base: "./"` do
+`vite.config.ts` mantém os caminhos relativos para funcionar na subpasta do repositório.
+
 **Stack:** React 18 · TypeScript · Vite 6 · GSAP 3 + ScrollTrigger · Lenis (rolagem suave).
 Sem outras bibliotecas de UI. Ícones são SVGs próprios (`components/Icon.tsx`).
 
@@ -58,13 +62,12 @@ src/
     projects.ts      projetos (obras da exposição)
     experience.ts    linha do tempo
     technologies.ts  biblioteca (estantes por categoria)
-    research.ts      pesquisa em andamento
     artworks.ts      acervo de pinturas + etiquetas de museu + pintura do Hero
     types.ts         tipos de todo o conteúdo
-  sections/        Hero, About, Projects, Library, Timeline, Research, Contact, Footer
+  sections/        Hero, About, Projects, Library, Timeline, Contact, Footer
   components/      Navbar, Frame (moldura), Study (desenhos técnicos SVG), PaintingHud,
                    Exhibit/ExhibitDetail (obra + ficha expansível), Bookshelf,
-                   Constellation, RevealText, SectionHeader, Monogram, Provisional…
+                   RevealText, SectionHeader, Monogram, Provisional…
   animations/
     gsap.ts          registro de plugins, media queries (MQ), curvas (EASE)
     smoothScroll.ts  Lenis sincronizado ao ticker do GSAP; scrollToTarget()
@@ -73,6 +76,7 @@ src/
   styles/          tokens.css (cores/fontes/texturas) + um CSS por área
   assets/
     artworks/        pinturas em WebP (otimizadas)
+    screens/         capturas dos sistemas em execução (ficha técnica dos projetos)
     textures/        texturas SVG procedurais (grain, photocopy, fiber, marble, stone)
     fonts/           karstar-free.ttf (monograma)
 public/favicon.svg
@@ -98,11 +102,15 @@ Os componentes só marcam elementos; a animação é criada em um lugar só:
 Regras: animar só `transform`, `opacity` e `clip-path`; `prefers-reduced-motion` desliga
 Lenis e animações (conteúdo aparece direto); pin da câmera do Hero só no desktop.
 
+O pin do Hero desloca tudo o que vem abaixo e por isso tem `refreshPriority: 1`: é medido
+antes dos demais ScrollTriggers. Qualquer outro pin novo precisa do mesmo cuidado (ou ser
+criado antes dos gatilhos das seções seguintes).
+
 ## 5. Decisões tomadas (histórico)
 
 | # | Decisão | Motivo |
 |---|---|---|
-| 1 | Estrutura de "galeria": seções = salas (Sala 0 Vestíbulo → Sala VI Correspondência) | `style.md` §7 |
+| 1 | Estrutura de "galeria": seções = salas (Sala 0 Vestíbulo → Sala V Correspondência) | `style.md` §7 |
 | 2 | **Brasão Plácido removido de todo o site** (navbar, sobre, rodapé, favicon) | Pedido do usuário. Contraria o `style.md` §8 — **não reintroduzir sem perguntar** |
 | 3 | Monograma **"AP" em Karstar**, sem separador | Pedido do usuário |
 | 4 | **Pinturas renascentistas reais** (domínio público) no lugar de placeholders | Pedido do usuário: "pinturas renascentistas misturando Grécia + Roma" |
@@ -111,31 +119,40 @@ Lenis e animações (conteúdo aparece direto); pin da câmera do Hero só no de
 | 7 | Desenhos técnicos (`Study`) sobrepostos às obras como camada HUD | Fotomontagem Nous |
 | 8 | Fundo das seções com textura de pedra + ruído (não cor lisa) | `style.md` §5 |
 | 9 | Sobrenome "Plácido" no nome | **Inferido** do brasão da família — confirmar |
+| 10 | Títulos e destaques em **Oswald** (sans condensada, sem itálico), no lugar da serifada do `style.md` §6 | Decisão posterior ao `style.md` (commit `9ab0052`). A variável CSS continua se chamando `--serif` e os `font-style: italic` ficaram sem efeito |
+| 11 | **Seção Pesquisa ("Caderno de investigações") removida**; as salas passaram a ser I–V | Pedido do usuário (12/11/2026) |
+| 12 | Sem "Edição MMXXVI" em lugar nenhum (Hero, navbar, rodapé) nem localização acima do nome | Pedido do usuário |
+| 13 | Capturas dos sistemas ficam na ficha técnica ("Registro"), não no lugar das pinturas | Mantém a proporção 70% clássico / 30% tech. Feitas rodando cada repositório com dados fictícios |
 
 ### Acervo atual (`src/data/artworks.ts`)
 | Onde | Obra |
 |---|---|
 | Hero (fundo) | Rafael — *A Escola de Atenas* (1509–1511), Vaticano |
 | Hero (quadro) | Apolo — detalhe da *Escola de Atenas* |
-| Fleet Control | Botticelli — *O Nascimento de Vênus* (c. 1485), Uffizi |
-| Engineering Hub | Rafael — *O Triunfo de Galateia* (c. 1512), Villa Farnesina |
-| Workflow System | Ticiano — *Baco e Ariadne* (1520–1523), National Gallery |
+| Summer IA | Botticelli — *O Nascimento de Vênus* (c. 1485), Uffizi |
+| BIM Elétrico | Rafael — *O Triunfo de Galateia* (c. 1512), Villa Farnesina |
+| Acompanhamento Pessoal | Ticiano — *Baco e Ariadne* (1520–1523), National Gallery |
 | Sobre | Leonardo — *Homem Vitruviano* (c. 1490), Gallerie dell'Accademia |
 
 Para trocar uma obra: substituir o arquivo em `assets/artworks/` e a etiqueta em `artworks.ts`.
+A legenda do desenho técnico sobre a obra usa o mesmo número da placa (`plate`).
 
 ## 6. Pendências de conteúdo (marcadas na tela como "Provisório" / "A documentar")
 
 - [ ] Confirmar sobrenome **Plácido** (`personal.ts`)
-- [ ] E-mail real (hoje `seuemail@email.com`)
-- [ ] URLs do GitHub e LinkedIn
-- [ ] Texto da trajetória (Sobre)
-- [ ] Especialidades e áreas de estudo (ficha acadêmica)
-- [ ] Períodos e instituições da formação (`experience.ts`)
-- [ ] Experiência profissional (hoje é um espaço reservado)
-- [ ] Objetivo, arquitetura, ano e links dos 3 projetos (`projects.ts` → `pendingFields`)
-- [ ] Confirmar os temas de pesquisa (`research.ts`)
-- [ ] Imagens próprias dos projetos (hoje usam pinturas do acervo)
+- [x] E-mail real
+- [x] URL do GitHub
+- [ ] URL do LinkedIn (hoje aponta para `linkedin.com`, marcado como provisório)
+- [x] Texto do perfil (Sobre); o bloco "Trajetória" do Sobre foi removido
+- [x] Especialidades e áreas de estudo (ficha acadêmica)
+- [ ] Período e local da atuação como técnico em informática (`experience.ts`)
+- [ ] Cargo e atividades na JFX Engenharia (hoje só empresa e período)
+- [x] Objetivo, arquitetura, ano e links dos 3 projetos (`projects.ts`)
+- [x] Capturas dos projetos (na ficha técnica; as obras continuam sendo pinturas)
+- [ ] Biblioteca (`technologies.ts`) ainda reflete a versão anterior: não lista Python,
+      FastAPI, Next.js e outras tecnologias que aparecem nos projetos
+- [ ] O campo `year` dos projetos existe nos dados mas não é exibido em lugar nenhum
+- [ ] Imagem e metadados de compartilhamento (Open Graph)
 
 Regra: **não inventar** informações pessoais, links ou resultados. O que não for conhecido
 fica marcado com `provisional: true` (aparece com a etiqueta "Provisório").
@@ -145,7 +162,8 @@ fica marcado com `provisional: true` (aparece com a etiqueta "Provisório").
 - **Pinturas:** domínio público, reproduções via Wikimedia Commons. Crédito no colofão.
 - **Karstar** (MaulanaCreative, via DaFont): **gratuita apenas para uso pessoal**.
   Se o site virar uso comercial, comprar licença ou trocar a fonte (`styles/typography.css`).
-- **Cormorant Garamond, Inter, JetBrains Mono:** Google Fonts (OFL).
+- **Oswald, Inter, JetBrains Mono:** Google Fonts (OFL). Só os pesos em uso são pedidos
+  no `index.html` (Inter 300/400/500, JetBrains Mono 400/500).
 
 ## 8. Notas técnicas / conhecidas
 
@@ -155,5 +173,8 @@ fica marcado com `provisional: true` (aparece com a etiqueta "Provisório").
   das pinturas e o grão fixo de tela (`.grain-overlay`).
 - `useScene` + `gsap.matchMedia` limpam todos os ScrollTriggers ao desmontar — manter esse
   padrão em animações novas.
-- Ao zipar, **não incluir `node_modules/` nem `dist/`** (são recriados com `npm install` /
+- `node_modules/` e `dist/` ficam fora do Git (são recriados com `npm install` /
   `npm run build`).
+- No desktop o Hero ocupa exatamente uma tela. O tamanho do nome depende da largura **e**
+  da altura (`.hero-name` em `styles/hero.css`); ao mudar textos ou espaçamentos do Hero,
+  conferir em 1366×650 e 1920×937, onde a folga é menor.

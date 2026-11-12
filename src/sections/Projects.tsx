@@ -33,7 +33,7 @@ export function Projects() {
           id="obras-title"
           numeral="II"
           label="Obras"
-          meta="Sala II / VI · Exposição"
+          meta="Sala II / V · Exposição"
           kicker="Exposição permanente"
           title={"Obras em\n*exposição*"}
           intro="Projetos, experimentos e sistemas em construção. Cada obra abre a sua ficha técnica sem sair da galeria."

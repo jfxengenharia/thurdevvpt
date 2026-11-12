@@ -21,8 +21,19 @@ interface StudyProps {
   draw?: boolean;
   /** Camada HUD sobre uma obra: sem fundo, sem figura, apenas construção. */
   overlay?: boolean;
+  /** Identificação da obra ("Fig. II"): a legenda do estudo usa a mesma numeração da placa. */
+  plate?: string;
   className?: string;
 }
+
+/** Numeração usada quando o estudo aparece sozinho, sem obra associada. */
+const DEFAULT_PLATE: Record<StudyVariant, string> = {
+  portrait: "Fig. I",
+  vitruvian: "Fig. II",
+  column: "Fig. III",
+  polyhedron: "Fig. IV",
+  spiral: "Fig. V",
+};
 
 /** Atributos comuns de traço desenhável. */
 const d = { className: "draw", pathLength: 1 } as const;
@@ -63,7 +74,7 @@ function Label({ x, y, children, anchor = "start", hud = false }: { x: number; y
 }
 
 /* ——— Retrato: cânone de proporção facial sobre figura em chiaroscuro ——— */
-function Portrait({ uid, overlay }: { uid: string; overlay: boolean }) {
+function Portrait({ uid, overlay, fig }: { uid: string; overlay: boolean; fig: string }) {
   const figure =
     "M48 500C62 404 128 372 170 354L172 322C150 302 139 270 139 230C139 168 168 128 204 128C244 128 266 170 264 226C263 270 253 300 231 322L233 354C276 372 340 402 352 500Z";
   return (
@@ -103,14 +114,14 @@ function Portrait({ uid, overlay }: { uid: string; overlay: boolean }) {
       <Label x={334} y={166} hud>I</Label>
       <Label x={334} y={233} hud>II</Label>
       <Label x={334} y={299} hud>III</Label>
-      <Label x={48} y={44}>FIG. I · CANON FACIAL</Label>
+      <Label x={48} y={44}>{fig} · CANON FACIAL</Label>
       <Label x={W - 48} y={H - 36} anchor="end" hud>1 : 3 · φ 1,618</Label>
     </>
   );
 }
 
 /* ——— Cânone vitruviano: círculo, quadrado, divisões áureas ——— */
-function Vitruvian() {
+function Vitruvian({ fig }: { fig: string }) {
   const cx = 200;
   const cy = 262;
   const r = 152;
@@ -137,7 +148,7 @@ function Vitruvian() {
         <circle cx={cx} cy={cy} r="2.5" className="st-dot" />
         <path {...d} d="M60 170V414M54 170H66M54 414H66" />
       </g>
-      <Label x={48} y={44}>FIG. II · HOMO AD CIRCVLVM</Label>
+      <Label x={48} y={44}>{fig} · HOMO AD CIRCVLVM</Label>
       <Label x={52} y={160} hud>a = 1</Label>
       <Label x={W - 48} y={H - 36} anchor="end" hud>r = a · φ⁻¹</Label>
     </>
@@ -160,7 +171,7 @@ function spiral(cx: number, cy: number, turns: number, rMax: number, dir: 1 | -1
   return path;
 }
 
-function Column() {
+function Column({ fig }: { fig: string }) {
   const flutes: string[] = [];
   for (let i = 1; i < 8; i++) {
     const t = i / 8;
@@ -187,7 +198,7 @@ function Column() {
       </g>
       <Label x={100} y={296} anchor="end" hud>9 D</Label>
       <Label x={200} y={474} anchor="middle" hud>1 D</Label>
-      <Label x={48} y={44}>FIG. III · ORDO IONICVS</Label>
+      <Label x={48} y={44}>{fig} · ORDO IONICVS</Label>
       <Label x={W - 48} y={44} anchor="end">ÊNTASE 1/6</Label>
     </>
   );
@@ -226,7 +237,7 @@ function icosahedron() {
 
 const ICO = icosahedron();
 
-function Polyhedron() {
+function Polyhedron({ fig }: { fig: string }) {
   const s = 84;
   const cx = 200;
   const cy = 252;
@@ -257,7 +268,7 @@ function Polyhedron() {
           return v[2] > -0.15 ? <circle key={i} cx={x} cy={y} r="2" className="st-dot" /> : null;
         })}
       </g>
-      <Label x={48} y={44}>FIG. IV · ICOSAEDRON</Label>
+      <Label x={48} y={44}>{fig} · ICOSAEDRON</Label>
       <Label x={W - 48} y={H - 36} anchor="end" hud>20 F · 30 A · 12 V</Label>
       <Label x={48} y={H - 36}>V − A + F = 2</Label>
     </>
@@ -265,7 +276,7 @@ function Polyhedron() {
 }
 
 /* ——— Retângulo áureo e espiral ——— */
-function Spiral() {
+function Spiral({ fig }: { fig: string }) {
   const arc =
     "M35 352A204 204 0 0 1 239 148A126 126 0 0 1 365 274A78 78 0 0 1 287 352A48 48 0 0 1 239 304A30 30 0 0 1 269 274A18 18 0 0 1 287 292";
   return (
@@ -282,20 +293,21 @@ function Spiral() {
       </g>
       <Label x={137} y={408} anchor="middle" hud>1</Label>
       <Label x={302} y={408} anchor="middle" hud>φ⁻¹</Label>
-      <Label x={48} y={44}>FIG. V · SECTIO AVREA</Label>
+      <Label x={48} y={44}>{fig} · SECTIO AVREA</Label>
       <Label x={W - 48} y={H - 36} anchor="end" hud>φ = 1,6180339…</Label>
     </>
   );
 }
 
-export function Study({ variant, draw = true, overlay = false, className }: StudyProps) {
+export function Study({ variant, draw = true, overlay = false, plate, className }: StudyProps) {
   const uid = useId().replace(/:/g, "");
+  const fig = (plate ?? DEFAULT_PLATE[variant]).toUpperCase();
   const content = {
-    portrait: <Portrait uid={uid} overlay={overlay} />,
-    vitruvian: <Vitruvian />,
-    column: <Column />,
-    polyhedron: <Polyhedron />,
-    spiral: <Spiral />,
+    portrait: <Portrait uid={uid} overlay={overlay} fig={fig} />,
+    vitruvian: <Vitruvian fig={fig} />,
+    column: <Column fig={fig} />,
+    polyhedron: <Polyhedron fig={fig} />,
+    spiral: <Spiral fig={fig} />,
   }[variant];
 
   return (

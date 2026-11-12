@@ -8,7 +8,6 @@ import { About } from "./sections/About";
 import { Projects } from "./sections/Projects";
 import { Library } from "./sections/Library";
 import { Timeline } from "./sections/Timeline";
-import { Research } from "./sections/Research";
 import { Contact } from "./sections/Contact";
 import { Footer } from "./sections/Footer";
 
@@ -51,7 +50,6 @@ export function App() {
         <Projects />
         <Library />
         <Timeline />
-        <Research />
         <Contact />
       </main>
       <Footer />

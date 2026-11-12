@@ -60,7 +60,6 @@ export interface Personal {
   about: {
     lead: string;
     paragraphs: string[];
-    trajectory: { text: string; provisional?: boolean };
     fields: ProfileField[];
   };
   contact: {
@@ -68,12 +67,18 @@ export interface Personal {
     email: { address: string; provisional?: boolean };
     links: SocialLink[];
   };
-  edition: string;
 }
 
 export interface ProjectLink {
   label: string;
   href: string;
+}
+
+/** Captura de tela do sistema em execução, exibida na ficha técnica. */
+export interface ProjectScreen {
+  src: string;
+  alt: string;
+  caption: string;
 }
 
 export interface Project {
@@ -90,6 +95,8 @@ export interface Project {
   technologies: string[];
   links: ProjectLink[];
   artwork: Artwork;
+  /** Capturas do sistema em execução (registro fotográfico da obra). */
+  screens?: ProjectScreen[];
   provisional?: boolean;
   /** Campos específicos ainda não documentados. */
   pendingFields?: Array<"objective" | "architecture" | "links" | "year">;
@@ -120,18 +127,6 @@ export interface TechnologyShelf {
   numeral: string;
   description: string;
   items: Technology[];
-}
-
-export type ResearchKind = "Assunto" | "Tecnologia" | "Problema" | "Experimento";
-
-export interface ResearchEntry {
-  id: string;
-  kind: ResearchKind;
-  status: string;
-  title: string;
-  summary: string;
-  topics: string[];
-  provisional?: boolean;
 }
 
 export interface NavItem {

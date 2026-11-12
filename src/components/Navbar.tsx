@@ -66,6 +66,8 @@ export function Navbar() {
     const menu = menuRef.current;
     if (!menu) return;
     menu.inert = !menuOpen;
+    // Com o sumário aberto, o conteúdo por trás sai da ordem de tabulação.
+    document.querySelectorAll<HTMLElement>("main, footer").forEach((el) => (el.inert = menuOpen));
     lockScroll(menuOpen);
 
     const reduced = window.matchMedia(MQ.reduced).matches;
@@ -98,6 +100,18 @@ export function Navbar() {
     return undefined;
   }, [menuOpen]);
 
+  // No layout desktop o sumário e o seu botão deixam de existir. Se a tela
+  // cruzar o breakpoint com ele aberto (tablet girado, janela redimensionada),
+  // fecha — senão a rolagem ficaria bloqueada sem um controle para liberar.
+  useEffect(() => {
+    const desktop = window.matchMedia("(min-width: 961px)");
+    const onChange = (e: MediaQueryListEvent) => {
+      if (e.matches) setMenuOpen(false);
+    };
+    desktop.addEventListener("change", onChange);
+    return () => desktop.removeEventListener("change", onChange);
+  }, []);
+
   const go = (e: MouseEvent<HTMLAnchorElement>, id: string) => {
     e.preventDefault();
     const wasOpen = menuOpen;
@@ -112,7 +126,6 @@ export function Navbar() {
         <div className="nav-inner">
           <a href="#inicio" className="nav-brand" onClick={(e) => go(e, "#inicio")} aria-label={`${personal.firstName} ${personal.lastName} · início`}>
             <Monogram className="nav-monogram" />
-            <span className="t-mono nav-edition">Ed. {personal.edition}</span>
           </a>
 
           <nav className="nav-links" aria-label="Seções">

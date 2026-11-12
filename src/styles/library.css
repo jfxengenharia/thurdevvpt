@@ -24,9 +24,11 @@
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: clamp(48px, 5vw, 72px) clamp(20px, 2.4vw, 36px);
 }
+/* minmax(0, …): os volumes têm largura fixa; sem isso a coluna cresce além da
+   tela em celulares estreitos e a estante é cortada na borda direita. */
 @media (max-width: 1200px) {
   .library-shelves {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 }
 
@@ -263,7 +265,7 @@
 
 @media (max-width: 960px) {
   .library-room {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
   /* A ficha acompanha a leitura, ancorada na base da tela. */
   .catalog {
