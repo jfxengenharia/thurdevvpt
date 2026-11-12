@@ -175,6 +175,8 @@ fica marcado com `provisional: true` (aparece com a etiqueta "Provisório").
   padrão em animações novas.
 - `node_modules/` e `dist/` ficam fora do Git (são recriados com `npm install` /
   `npm run build`).
-- No desktop o Hero ocupa exatamente uma tela. O tamanho do nome depende da largura **e**
-  da altura (`.hero-name` em `styles/hero.css`); ao mudar textos ou espaçamentos do Hero,
-  conferir em 1366×650 e 1920×937, onde a folga é menor.
+- No desktop o Hero ocupa uma tela (mín. 680px). O nome é dimensionado **só pela largura**
+  (`.t-display`): limitar pela altura encolhia o nome pela metade em notebooks e foi
+  revertido a pedido. Em telas com até 800px de altura o rodapé do Hero (convite à rolagem e
+  crédito) é ocultado para não cobrir os botões. Ao mudar o Hero, conferir em 1536×730,
+  1366×657 e 1920×937.
