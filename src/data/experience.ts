@@ -6,7 +6,7 @@ import type { ExperienceEntry } from "./types";
  * Informado pelo autor: técnico em informática como experiência, ADS na
  * Uninassau Recife (polo Boa Viagem), JFX Engenharia de janeiro a novembro
  * de 2026 e a Summer IA como projeto pessoal. Técnico em informática de
- * janeiro de 2026 até hoje; o local ainda não foi informado.
+ * janeiro de 2026 até hoje (local não informado).
  */
 
 /** Mês e ano no formato da linha do tempo: janeiro de 2026 → "01.26". */
@@ -30,9 +30,8 @@ export const experience: ExperienceEntry[] = [
     period: ongoingSince("01.26"),
     kind: "Experiência",
     title: "Técnico em Informática",
-    institution: "Local a definir",
+    institution: "Experiência profissional",
     description: "Atuação como técnico em informática.",
-    provisional: true,
   },
   {
     id: "ads",

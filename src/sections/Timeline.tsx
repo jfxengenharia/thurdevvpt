@@ -50,7 +50,7 @@ export function Timeline() {
           meta="Sala IV / V · Cronologia"
           kicker="Formação, experiências e marcos"
           title={"Linha do\n*tempo*"}
-          intro="Registro cronológico de estudos, experiências e conquistas. Os períodos ainda não informados aparecem como provisórios."
+          intro="Registro cronológico de estudos, experiências e conquistas."
         />
 
         <div className="tl">
